@@ -1,6 +1,7 @@
 let uname = substitute(system('uname'), '\n', '', '')
 
 
+
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -67,6 +68,7 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --completion --key-bindi
 
 " Themes
 Plug 'drewtempelmeyer/palenight.vim'
+
 " Plug 'KabbAmine/yowish.vim'
 
 " Adding plugin for ipython to execute selected lines"
@@ -188,7 +190,6 @@ if has("persistent_undo")
     silent! call mkdir($HOME . "/.vim/undo", 'p')
     set undofile
     set undodir=$HOME/.vim/undo
-endif
 
 let g:undotree_SetFocusWhenToggle = 1
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -513,11 +514,11 @@ augroup END
 let g:palenight_terminal_italics=1
 let g:lightline.colorscheme = 'palenight'
 
-set background=dark
+set background=light
 colorscheme palenight
 
 " remove background color (transparent)
-hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermfg=None
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Trailing whitespaces
@@ -595,7 +596,7 @@ command! -bang -nargs=? -complete=dir Buffers call fzf#vim#buffers(<q-args>, fzf
 
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>gf :GFiles<CR>
-nnoremap <leader>r :Rg<CR>
+nnoremap <leader>r :Ag<CR>
 nnoremap <leader>L :Lines<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>t :Tags<CR>
@@ -629,3 +630,6 @@ inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 noremap {;<CR> {<CR>};<ESC>O
+
+
+" hi Comment ctermfg=LightBlue
